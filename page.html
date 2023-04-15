@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuários</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/icon" href="./mario.ico">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cadastro de Usuário</h1>
+      <form id="cadastro-form">
+      <label for="nome">Nome do usuário:</label>
+      <input type="text" id="nome" name="nome">
+      <label for="email">E-mail do usuário:</label>
+      <input type="email" id="email" name="email">
+      <label for="telefone">Telefone do usuário:</label>
+      <input type="text" id="telefone" name="telefone">
+      <label for="bio">Bio:</label>
+      <input type="text" id="bio" name="bio">
+      <input type="submit" value="Cadastrar">
+    </form>
+    </div>
+    <div id="usuarios-cadastrados">
+      <h2>Usuários</h2>
+      <div id="usuarios"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+
+let usuariosCadastrados = [];
+const cadastroForm = document.getElementById("cadastro-form");
+const usuariosDiv = document.getElementById("usuarios");
+
+cadastroForm.addEventListener("submit", function(event) {
+event.preventDefault();
+
+const nome = document.getElementById("nome").value;
+const email = document.getElementById("email").value;
+const telefone = document.getElementById("telefone").value;
+const bio = document.getElementById("bio").value;
+
+const usuario = {
+nome: nome,
+email: email,
+telefone: telefone,
+bio: bio
+};
+
+usuariosCadastrados.push(usuario);
+
+document.getElementById("nome").value = "";
+document.getElementById("email").value = "";
+document.getElementById("telefone").value = "";
+document.getElementById("bio").value = "";
+
+exibirUsuarios();
+});
+
+function exibirUsuarios() {
+usuariosDiv.innerHTML = "";
+
+usuariosCadastrados.forEach(function(usuario, indice) {
+  const usuarioDiv = document.createElement("div");
+  usuarioDiv.classList.add("usuario");
+  usuarioDiv.innerHTML = usuario.nome;
+
+    const dadosUsuarioDiv = document.createElement("div");
+    dadosUsuarioDiv.classList.add("dados-usuario");
+    dadosUsuarioDiv.innerHTML = `
+      <p><strong>E-mail:</strong> ${usuario.email}</p>
+      <p><strong>Telefone:</strong> ${usuario.telefone}</p>
+      <p><strong>Bio:</strong> ${usuario.bio}</p>
+    `;
+
+    const mostrarDadosBtn = document.createElement("button");
+    mostrarDadosBtn.classList.add("mostrar-dados-btn");
+    mostrarDadosBtn.innerText = "Mostrar dados";
+    mostrarDadosBtn.addEventListener("click", function() {
+      dadosUsuarioDiv.style.display = "block";
+      mostrarDadosBtn.style.display = "none";
+      esconderDadosBtn.style.display = "inline-block";
+    });
+
+    const esconderDadosBtn = document.createElement("button");
+    esconderDadosBtn.classList.add("esconder-dados-btn");
+    esconderDadosBtn.innerText = "Esconder dados";
+    esconderDadosBtn.style.display = "none";
+    esconderDadosBtn.addEventListener("click", function() {
+      dadosUsuarioDiv.style.display = "none";
+      mostrarDadosBtn.style.display = "inline-block";
+      esconderDadosBtn.style.display = "none";
+    });
+
+    usuarioDiv.appendChild(mostrarDadosBtn);
+    usuarioDiv.appendChild(esconderDadosBtn);
+    usuarioDiv.appendChild(dadosUsuarioDiv);
+    usuariosDiv.appendChild(usuarioDiv);
+  });
+}
+    </script>
+  </body>
+</html>

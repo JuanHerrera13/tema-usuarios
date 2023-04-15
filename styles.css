@@ -1,0 +1,109 @@
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #353535;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cadastro-form {
+  width: 50%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #d4524d;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #f5de4d;
+}
+
+#cadastro-form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #d4524d;
+}
+
+#cadastro-form input[type="text"],
+#cadastro-form input[type="email"],
+#cadastro-form input[type="password"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  background-color: #fff;
+  color: #353535;
+}
+
+#cadastro-form input[type="submit"] {
+  padding: 10px;
+  background-color: #d4524d;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#usuarios-cadastrados {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+#usuarios-cadastrados h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #f5de4d;
+}
+
+.usuario {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #353535;
+}
+
+.usuario:hover {
+  background-color: #d4524d;
+  color: #fff;
+}
+
+.dados-usuario {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #353535;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.dados-usuario p {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.mostrar-dados-btn,
+.esconder-dados-btn {
+  padding: 10px;
+  background-color: #d4524d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.mostrar-dados-btn:hover,
+.esconder-dados-btn:hover {
+  background-color: #ff7f43;
+}
